@@ -1,0 +1,2816 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Monthly CX QA KPI Submission | Americas 🌎</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #f5f7fa 0%, #e8ecf1 100%);
+      color: #2c3e50;
+      min-height: 100vh;
+      padding-bottom: 120px;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #4b286d 0%, #8968a0 100%);
+      color: white;
+      padding: 2rem 1.5rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .header h1 {
+      font-size: 1.75rem;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+    }
+
+    .header p {
+      font-size: 0.9rem;
+      opacity: 0.95;
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 1800px;
+      margin: 0 auto;
+      padding: 1.5rem;
+      
+    }
+
+    .card {
+      background: white;
+      border-radius: 10px;
+      padding: 1rem;
+      margin-bottom: 1.25rem;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    }
+
+    .card-header {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: #4b286d;
+      margin-bottom: 0.8rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 2px solid #dbd0e2;
+    }
+
+    .form-section {
+      display: grid;
+      grid-template-columns: minmax(240px, 2fr) minmax(130px, 1fr) minmax(130px, 1fr) auto;
+      column-gap: 1.5rem;
+      row-gap: 0.6rem;
+      align-items: center;
+      margin-bottom: 1.25rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .form-group label {
+      font-weight: 600;
+      color: #4b286d;
+      margin-bottom: 0.4rem;
+      font-size: 0.85rem;
+    }
+
+    .helper-text {
+      font-size: 0.75rem;
+      color: #666;
+      margin-top: 0.2rem;
+      font-style: italic;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    textarea {
+      padding: 0.6rem;
+      border: 2px solid #dbd0e2;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      font-family: 'Segoe UI', sans-serif;
+      transition: all 0.3s ease;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 60px;
+      max-height: 120px;
+    }
+
+    input[type="text"]:focus,
+    input[type="number"]:focus,
+    textarea:focus {
+      outline: none;
+      border-color: #8968a0;
+      box-shadow: 0 0 0 3px rgba(137, 104, 160, 0.1);
+    }
+
+    input:disabled {
+      background-color: #f5f7fa;
+      color: #666;
+      cursor: not-allowed;
+      border-color: #e8ecf1;
+    }
+
+    input.error,
+    textarea.error {
+      border-color: #e74c3c;
+      background-color: #ffe8e8;
+    }
+
+    .btn {
+      padding: 0.65rem 1.3rem;
+      border: none;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #66cc00 0%, #9cde59 100%);
+      color: white;
+    }
+
+    .btn-primary:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(102, 204, 0, 0.3);
+    }
+
+    .btn-primary:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .btn-secondary {
+      background: white;
+      color: #4b286d;
+      border: 2px solid #4b286d;
+    }
+
+    .btn-secondary:hover {
+      background: #f5f7fa;
+    }
+
+    .btn-utility {
+      background: #ad96bd;
+      color: white;
+      padding: 0.45rem 0.9rem;
+      font-size: 0.8rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .btn-utility:hover {
+      background: #8968a0;
+    }
+
+    .btn-reset {
+      background: white;
+      color: #e74c3c;
+      border: 2px solid #e74c3c;
+    }
+
+    .btn-reset:hover {
+      background: #ffe8e8;
+      border-color: #c0392b;
+      color: #c0392b;
+    }
+
+    .banner {
+      padding: 0.9rem 1.3rem;
+      border-radius: 8px;
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      font-weight: 500;
+      font-size: 0.9rem;
+    }
+
+    .banner-error {
+      background-color: #ffe8e8;
+      border-left: 4px solid #e74c3c;
+      color: #c0392b;
+    }
+
+    .banner-success {
+      background-color: #e0f5cc;
+      border-left: 4px solid #66cc00;
+      color: #2d5016;
+    }
+
+    .banner-icon {
+      font-size: 1.3rem;
+    }
+
+    .team-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, #66cc00 0%, #9cde59 100%);
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 18px;
+      font-weight: 600;
+      margin-bottom: 0.8rem;
+      font-size: 0.85rem;
+    }
+
+    .roster-note {
+      font-size: 0.75rem;
+      color: #666;
+      margin-bottom: 0.8rem;
+      padding: 0.6rem 1rem;
+      background: #f5f7fa;
+      border-left: 3px solid #8968a0;
+      border-radius: 4px;
+      line-height: 1.4;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .table-container {
+      overflow: visible;
+    }
+
+    table {
+      width: max-content;
+      min-width: 100%;
+      table-layout: auto;
+    }
+
+    thead {
+      background: linear-gradient(135deg, #4b286d 0%, #8968a0 100%);
+      color: white;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    th {
+      padding: 0.5rem 0.5rem;
+      text-align: center;
+      font-weight: 600;
+      font-size: 0.85rem;
+      white-space: nowrap;
+    }
+
+    td {
+      padding: 0.35rem 0.5rem;
+      border-bottom: 1px solid #e8ecf1;
+      vertical-align: middle;
+      font-size: 0.85rem;
+    }
+
+    /* New style for status cells */
+    td.status-cell {
+      text-align: center;
+    }
+
+    tbody tr:hover {
+      background-color: #f5f7fa;
+    }
+
+    td input[type="number"] {
+      padding: 0.3rem;
+      font-size: 0.8rem;
+      width: 100%;
+      min-width: 60px;
+      text-align: center;
+    }
+
+    td textarea {
+      padding: 0.3rem;
+      font-size: 0.75rem;
+      width: 100%;
+      min-width: 250px;
+      min-height: 40px;
+      text-align: center;
+    }
+
+
+
+    .read-only {
+      background-color: #f5f7fa;
+      font-weight: 500;
+      color: #4b286d;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 150px;
+      font-size: 0.85rem;
+    }
+
+    /* Percentage input wrapper */
+    .percentage-input-wrapper {
+      position: relative;
+      display: inline-block;
+      width: 100%;
+    }
+
+    .percentage-input-wrapper input {
+      padding-right: 25px;
+      /* Make room for % symbol */
+    }
+
+    .percentage-input-wrapper::after {
+      content: '%';
+      position: absolute;
+      right: 8px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #8968a0;
+      font-weight: 600;
+      font-size: 0.85rem;
+      pointer-events: none;
+      /* Allow clicking through to input */
+    }
+
+    /* Error state for percentage wrapper */
+    .percentage-input-wrapper.error::after {
+      color: #e74c3c;
+    }
+
+
+    .action-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: white;
+      border-top: 3px solid #dbd0e2;
+      padding: 1rem 1.5rem;
+      box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 100;
+    }
+
+    .action-bar-left {
+      color: #666;
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+
+    .action-bar-right {
+      display: flex;
+      gap: 0.9rem;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .spinner {
+      border: 4px solid #f3f3f3;
+      border-top: 4px solid #8968a0;
+      border-radius: 50%;
+      width: 45px;
+      height: 45px;
+      animation: spin 1s linear infinite;
+      margin: 1.5rem auto;
+    }
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    .status-icon {
+      display: inline-block;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 22px;
+      font-size: 0.7rem;
+      font-weight: bold;
+    }
+
+    .status-error {
+      background-color: #e74c3c;
+      color: white;
+    }
+
+    .status-success {
+      background-color: #66cc00;
+      color: white;
+    }
+
+    .status-warning {
+      background-color: #f39c12;
+      color: white;
+    }
+
+    /* Exempt row styling */
+    .exempt-row {
+      background-color: #f5f5f5 !important;
+      opacity: 0.5;
+    }
+
+    .exempt-row input,
+    .exempt-row textarea {
+      background-color: #e8e8e8 !important;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+
+    .exempt-row .read-only {
+      background-color: #e0e0e0 !important;
+      color: #999 !important;
+    }
+
+    /* Exempt button */
+    .btn-exempt {
+      background: white;
+      color: #666;
+      border: 2px solid #ddd;
+      padding: 0.3rem 0.6rem;
+      font-size: 0.75rem;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .btn-exempt:hover {
+      border-color: #999;
+      background: #f5f7fa;
+    }
+
+    .btn-exempt.active {
+      background: #ad96bd;
+      color: white;
+      border-color: #8968a0;
+    }
+
+    .btn-exempt.active:hover {
+      background: #8968a0;
+    }
+
+
+    .team-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 0.6rem;
+      margin-top: 0.6rem;
+    }
+
+
+    .team-member-card {
+      background: #ffffff;
+      padding: 0.5rem 0.8rem;
+      border-radius: 20px;
+      border: 1px solid #dbd0e2;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.8rem;
+    }
+
+    .team-member-wdid {
+      font-weight: 600;
+      color: #4b286d;
+      background: linear-gradient(135deg, #dbd0e2 0%, #e8ecf1 100%);
+      padding: 0.2rem 0.5rem;
+      border-radius: 12px;
+      font-size: 0.75rem;
+      flex-shrink: 0;
+    }
+
+    .team-member-name {
+      color: #666;
+      white-space: normal;
+      word-wrap: break-word;
+      line-height: 1.3;
+    }
+
+    thead th {
+      overflow: visible !important;
+      position: relative;
+      z-index: 2;
+    }
+
+    .has-tooltip {
+      position: relative;
+      cursor: help;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.2rem;
+    }
+
+    .has-tooltip-icon {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      font-size: 0.65rem;
+      font-weight: 700;
+      background: #ad96bd;
+      color: #fff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .tooltip-text {
+      position: absolute;
+      top: calc(100% + 5px);
+      left: 0;
+      background: #4b286d;
+      color: #ffffff;
+      padding: 0.5rem 0.65rem;
+      border-radius: 5px;
+      font-size: 0.7rem;
+      max-width: 240px;
+      box-sizing: border-box;
+      white-space: normal;
+      word-wrap: break-word;
+      line-height: 1.3;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(3px);
+      transition: opacity 0.2s ease, transform 0.2s ease;
+      z-index: 9999;
+    }
+
+    .tooltip-text::after {
+      content: "";
+      position: absolute;
+      bottom: 100%;
+      left: 10px;
+      border-width: 5px;
+      border-style: solid;
+      border-color: transparent transparent #4b286d transparent;
+    }
+
+    .has-tooltip:hover .tooltip-text {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* TL Details Display */
+    .tl-details-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.8rem;
+      margin-top: 0.8rem;
+      padding: 0.9rem;
+      background: linear-gradient(135deg, #f5f7fa 0%, #e8ecf1 100%);
+      border-radius: 8px;
+      border: 2px solid #dbd0e2;
+    }
+
+    .detail-item {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .detail-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: #8968a0;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      margin-bottom: 0.2rem;
+    }
+
+    .detail-value {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #4b286d;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .detail-value.email {
+      font-size: 0.8rem;
+      color: #66cc00;
+      font-weight: 500;
+    }
+
+    td.centered-cell {
+  text-align: center;
+}
+
+  </style>
+</head>
+
+<body>
+  <div class="header">
+    <h1>Monthly CX QA KPI Submission | Americas 🌎</h1>
+    <p>Submit your team’s monthly performance data. Calculations are handled automatically.</p>
+  </div>
+
+  <!-- 🔔 GLOBAL SUBMISSION RULE -->
+  <div class="banner banner-success" style="margin: 1rem 1.5rem;">
+  <span class="banner-icon">💡</span>
+  <div>
+    <strong>Before you submit:</strong>
+All numeric KPI fields must be completed. If any value is <strong>0</strong>, please add a brief comment for context.
+<em>Exempted QAs are excluded.</em>
+
+  </div>
+</div>
+
+  <div class="container">
+    <p style="margin: 0.5rem 0 1.25rem; color: #555; font-size: 0.9rem;">
+  <strong>Start by entering your Workday ID to load your team and begin your monthly submission.</strong>
+</p>
+
+    <!-- Success Banner -->
+    <div id="successBanner" class="banner banner-success hidden">
+      <span class="banner-icon">✅</span>
+      <div id="successMessage"></div>
+    </div>
+
+    <!-- Error Banner -->
+    <div id="errorBanner" class="banner banner-error hidden">
+      <span class="banner-icon">⚠</span>
+      <div id="errorMessage"></div>
+    </div>
+
+    <!-- TL Identification Section -->
+    <div class="card">
+      <div class="card-header">Details & Reporting Period</div>
+
+      <div class="form-section">
+        <!-- WDID -->
+        <div class="form-group">
+          <label for="tlWdid" class="has-tooltip">
+                        Your Workday ID
+                        <span class="has-tooltip-icon">?</span>
+                        <span class="tooltip-text">
+                            Enter your own Workday ID as Team Leader. Click "Load Team" to verify your details and load your team members.
+                        </span>
+                    </label>
+          <input type="text" id="tlWdid" placeholder="Enter your WDID (e.g., 10275858)">
+          <div class="helper-text">Click "Load Team" to verify and load your team.</div>
+        </div>
+
+        <!-- Month -->
+        <div class="form-group">
+          <label for="month" class="has-tooltip">
+                        Month
+                        <span class="has-tooltip-icon">?</span>
+                        <span class="tooltip-text">
+                            Reporting month for these KPIs. This value is set by the system and cannot be edited.
+                        </span>
+                    </label>
+          <input type="text" id="month" value="November" disabled>
+        </div>
+
+        <!-- Year -->
+        <div class="form-group">
+          <label for="year" class="has-tooltip">
+                        Year
+                        <span class="has-tooltip-icon">?</span>
+                        <span class="tooltip-text">
+                            Reporting year for these KPIs. This value is set by the system and cannot be edited.
+                        </span>
+                    </label>
+          <input type="text" id="year" value="2025" disabled>
+        </div>
+
+        <!-- Load Team button -->
+        <div class="form-group">
+          <label>&nbsp;</label>
+          <button class="btn btn-primary" id="loadTeamBtn" onclick="loadTeam()">
+                        Load Team
+                    </button>
+        </div>
+      </div>
+
+      <!-- TL Details Display (appears after successful load) -->
+      <div id="tlDetailsSection" class="hidden">
+        <div class="tl-details-grid">
+          <div class="detail-item">
+            <div class="detail-label">Name</div>
+            <div class="detail-value" id="tlName">—</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Email</div>
+            <div class="detail-value email" id="tlEmail">—</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Manager</div>
+            <div class="detail-value" id="tlManager">—</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Sr Manager</div>
+            <div class="detail-value" id="tlSrManager">—</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Role</div>
+            <div class="detail-value" id="tlRole">—</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Program</div>
+            <div class="detail-value" id="tlProgram">—</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Country</div>
+            <div class="detail-value" id="tlCountry">—</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Region</div>
+            <div class="detail-value" id="tlRegion">—</div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Loading Spinner -->
+      <div id="loadingSpinner" class="hidden">
+        <div class="spinner"></div>
+      </div>
+
+      <!-- Team Members Summary -->
+      <div id="teamSummary" class="card hidden">
+        <div class="card-header">Team Members</div>
+        <div class="team-badge" id="teamCount">Team Members Found: 0</div>
+        <div class="roster-note">
+          📋 Team list based on Workday Roster. Notice something off? Please make corrections in Workday first.
+        </div>
+        <div class="team-list" id="teamList"></div>
+      </div>
+
+      <!-- Accuracy % to Goal Section -->
+      <div id="accuracySection" class="card hidden">
+        <div class="card-header">Accuracy % to Goal Inputs</div>
+        <div class="roster-note">
+          ⚠️ <strong>Enter whole numbers only</strong> (e.g., 5, 10, 15). Do not enter percentages or include the %
+          symbol.
+        </div>
+        <button class="btn btn-utility" onclick="fillEmptyFields('accuracy')">Fill empty KPI cells with 0</button>
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th style="width: 80px;">
+                  <span class="has-tooltip">
+        WDID
+        <span class="has-tooltip-icon">?</span>
+                  <span class="tooltip-text">
+          Unique Workday ID of the QA analyst.
+        </span>
+                  </span>
+                </th>
+                <th style="width: 120px;">
+                  <span class="has-tooltip">
+        Name
+        <span class="has-tooltip-icon">?</span>
+                  <span class="tooltip-text">
+          Full name of the QA analyst.
+        </span>
+                  </span>
+                </th>
+                <th style="width: 80px;">
+                  <span class="has-tooltip">
+        Exempt
+        <span class="has-tooltip-icon">?</span>
+                  <span class="tooltip-text">
+          Mark this team member as exempt (e.g., recently promoted, insufficient data). Exempted rows will be greyed out and skipped during submission.
+        </span>
+                  </span>
+                </th>
+                <th style="width: 80px;">
+
+                  <span class="has-tooltip">
+                                    Cal Accurate
+                                    <span class="has-tooltip-icon">?</span>
+                  <span class="tooltip-text">
+                                        Number of calibrations evaluated as accurate.
+                                    </span>
+                  </span>
+                </th>
+                <th style="width: 80px;">
+                  <span class="has-tooltip">
+                                    Cal Performed
+                                    <span class="has-tooltip-icon">?</span>
+                  <span class="tooltip-text">
+                                        Total calibrations completed.
+                                    </span>
+                  </span>
+                </th>
+                <th style="width: 80px;">
+                  <span class="has-tooltip">
+                                    Valid Disputes
+                                    <span class="has-tooltip-icon">?</span>
+                  <span class="tooltip-text">
+                                        Number of disputes validated as correct.
+                                    </span>
+                  </span>
+                </th>
+                <th style="width: 80px;">
+                  <span class="has-tooltip">
+                                    Total Audits
+                                    <span class="has-tooltip-icon">?</span>
+                  <span class="tooltip-text">
+                                        Total completed audits.
+                                    </span>
+                  </span>
+                </th>
+                <th style="width: 80px;">
+                  <span class="has-tooltip">
+                                    Accurate Audits
+                                    <span class="has-tooltip-icon">?</span>
+                  <span class="tooltip-text">
+                                        Number of audits evaluated as accurate.
+                                    </span>
+                  </span>
+                </th>
+                <th style="width: 300px;">
+                  <span class="has-tooltip">
+                                    Comments
+                                    <span class="has-tooltip-icon">?</span>
+                  <span class="tooltip-text">
+                                        Optional notes or comments for this team member. Required if any numeric KPI value is 0.
+                                    </span>
+                  </span>
+                </th>
+                <th style="width: 50px;">
+                  <span class="has-tooltip">
+                                    Status
+                                    <span class="has-tooltip-icon">?</span>
+                  <span class="tooltip-text">
+                                        Live validation status.
+                                    </span>
+                  </span>
+                </th>
+              </tr>
+            </thead>
+            <tbody id="accuracyTable"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Productivity Section -->
+      <div id="productivitySection" class="card hidden">
+        <div class="card-header">Productivity Inputs</div>
+        <div class="roster-note">
+          ⚠️ <strong>Enter whole numbers only</strong> (e.g., 5, 10, 15). Do not enter percentages or include the %
+          symbol.
+        </div>
+        <button class="btn btn-utility" onclick="fillEmptyFields('productivity')">Fill empty KPI cells with 0</button>
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th style="width: 80px;">
+                  <span class="has-tooltip">
+        WDID
+        <span class="has-tooltip-icon">?</span>
+                  <span class="tooltip-text">Unique Workday ID of the QA analyst.</span>
+                  </span>
+                </th>
+                <th style="width: 120px;">
+                  <span class="has-tooltip">
+        Name
+        <span class="has-tooltip-icon">?</span>
+                  <span class="tooltip-text">Full name of the QA analyst.</span>
+                  </span>
+                </th>
+                <th style="width: 80px;">
+                  <span class="has-tooltip">
+        Exempt
+        <span class="has-tooltip-icon">?</span>
+                  <span class="tooltip-text">
+          Mark this team member as exempt (e.g., recently promoted, insufficient data). Exempted rows will be greyed out and skipped during submission.
+        </span>
+                  </span>
+                </th>
+                <th style="width: 80px;">
+
+                  <span class="has-tooltip">
+                  QA Completed
+                  <span class="has-tooltip-icon">?</span>
+                  <span class="tooltip-text">Quality Evaluations completed.</span>
+                  </span>
+                </th>
+                <th style="width: 80px;">
+                  <span class="has-tooltip">
+                  QA Target
+                  <span class="has-tooltip-icon">?</span>
+                  <span class="tooltip-text">Target Quality Evaluations.</span>
+                  </span>
+                </th>
+                <th style="width: 80px;">
+                  <span class="has-tooltip">
+                  VOC Completed
+                  <span class="has-tooltip-icon">?</span>
+                  <span class="tooltip-text">VOC/CSAT evaluations completed.</span>
+                  </span>
+                </th>
+                <th style="width: 80px;">
+                  <span class="has-tooltip">
+                  VOC Target
+                  <span class="has-tooltip-icon">?</span>
+                  <span class="tooltip-text">Target VOC/CSAT evaluations.</span>
+                  </span>
+                </th>
+                <th style="width: 80px;">
+                  <span class="has-tooltip">
+                  Cal Completed
+                  <span class="has-tooltip-icon">?</span>
+                  <span class="tooltip-text">Calibrations completed.</span>
+                  </span>
+                </th>
+                <th style="width: 80px;">
+                  <span class="has-tooltip">
+                  Cal Target
+                  <span class="has-tooltip-icon">?</span>
+                  <span class="tooltip-text">Target calibrations.</span>
+                  </span>
+                </th>
+                <th style="width: 300px;">
+                  <span class="has-tooltip">
+                  Comments
+                  <span class="has-tooltip-icon">?</span>
+                  <span class="tooltip-text">Optional notes or comments for this team member. Required if any numeric KPI value is 0.</span>
+                  </span>
+                </th>
+                <th style="width: 50px;">
+                  <span class="has-tooltip">
+                  Status
+                  <span class="has-tooltip-icon">?</span>
+                  <span class="tooltip-text">Live validation status.</span>
+                  </span>
+                </th>
+              </tr>
+            </thead>
+            <tbody id="productivityTable"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Quality % to Goal Section -->
+      <div id="qualitySection" class="card hidden">
+        <div class="card-header">Quality Score (Actual) Inputs</div>
+        <div class="roster-note">
+          ⚠️ <strong>Enter percentage values</strong> (e.g., 95.5 means 95.5%). Do not enter decimals like 0.955. The %
+          symbol displays automatically.
+        </div>
+        <button class="btn btn-utility" onclick="fillEmptyFields('quality')">Fill empty KPI cells with 0</button>
+        <div class="table-container">
+          <table>
+            <thead>
+              <thead>
+                <tr>
+                  <th style="width: 80px;">
+                    <span class="has-tooltip">
+        WDID
+        <span class="has-tooltip-icon">?</span>
+                    <span class="tooltip-text">Unique Workday ID of the QA analyst.</span>
+                    </span>
+                  </th>
+                  <th style="width: 120px;">
+                    <span class="has-tooltip">
+        Name
+        <span class="has-tooltip-icon">?</span>
+                    <span class="tooltip-text">Full name of the QA analyst.</span>
+                    </span>
+                  </th>
+                  <th style="width: 80px;">
+                    <span class="has-tooltip">
+        Exempt
+        <span class="has-tooltip-icon">?</span>
+                    <span class="tooltip-text">
+          Mark this team member as exempt (e.g., recently promoted, insufficient data). Exempted rows will be greyed out and skipped during submission.
+        </span>
+                    </span>
+                  </th>
+                  <th style="width: 80px;">
+
+                    <span class="has-tooltip">
+                  Quality Score (Actual)
+                  <span class="has-tooltip-icon">?</span>
+                    <span class="tooltip-text">Enter the QA’s final Quality score for the month as a percentage (e.g., 95.5).</span>
+                    </span>
+                  </th>
+                  <th style="width: 300px;">
+                    <span class="has-tooltip">
+                  Comments
+                  <span class="has-tooltip-icon">?</span>
+                    <span class="tooltip-text">Optional notes or comments for this team member. Required if any numeric KPI value is 0.</span>
+                    </span>
+                  </th>
+                  <th style="width: 50px;">
+                    <span class="has-tooltip">
+                  Status
+                  <span class="has-tooltip-icon">?</span>
+                    <span class="tooltip-text">Live validation status.</span>
+                    </span>
+                  </th>
+                </tr>
+              </thead>
+            <tbody id="qualityTable"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- VOC % to Goal Section -->
+      <div id="vocSection" class="card hidden">
+        <div class="card-header">VOC Score (Actual) Inputs</div>
+        <div class="roster-note">
+          ⚠️ <strong>Enter percentage values</strong> (e.g., 95.5 means 95.5%). Do not enter decimals like 0.955. The %
+          symbol displays automatically.
+        </div>
+        <button class="btn btn-utility" onclick="fillEmptyFields('voc')">Fill empty KPI cells with 0</button>
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th style="width: 80px;">
+                  <span class="has-tooltip">
+        WDID
+        <span class="has-tooltip-icon">?</span>
+                  <span class="tooltip-text">Unique Workday ID of the QA analyst.</span>
+                  </span>
+                </th>
+                <th style="width: 120px;">
+                  <span class="has-tooltip">
+        Name
+        <span class="has-tooltip-icon">?</span>
+                  <span class="tooltip-text">Full name of the QA analyst.</span>
+                  </span>
+                </th>
+                <th style="width: 80px;">
+                  <span class="has-tooltip">
+        Exempt
+        <span class="has-tooltip-icon">?</span>
+                  <span class="tooltip-text">
+          Mark this team member as exempt (e.g., recently promoted, insufficient data). Exempted rows will be greyed out and skipped during submission.
+        </span>
+                  </span>
+                </th>
+                <th style="width: 80px;">
+
+                  <span class="has-tooltip">
+                  VOC Score (Actual)
+                  <span class="has-tooltip-icon">?</span>
+                  <span class="tooltip-text">Enter the QA’s final VOC score for the month as a percentage (e.g., 92).</span>
+                  </span>
+                </th>
+                <th style="width: 300px;">
+                  <span class="has-tooltip">
+                  Comments
+                  <span class="has-tooltip-icon">?</span>
+                  <span class="tooltip-text">Optional notes or comments for this team member. Required if any numeric KPI value is 0.</span>
+                  </span>
+                </th>
+                <th style="width: 50px;">
+                  <span class="has-tooltip">
+                  Status
+                  <span class="has-tooltip-icon">?</span>
+                  <span class="tooltip-text">Live validation status.</span>
+                  </span>
+                </th>
+              </tr>
+            </thead>
+            <tbody id="vocTable"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Team Development Section -->
+      <div id="teamDevelopmentSection" class="card hidden">
+        <div class="card-header">Team Development Inputs</div>
+        <div class="roster-note">
+          ⚠️ <strong>Enter whole numbers only</strong> (e.g., 5, 10, 15). Do not enter percentages or include the %
+          symbol.
+        </div>
+        <button class="btn btn-utility" onclick="fillEmptyFields('teamDevelopment')">Fill empty KPI cells with 0</button>
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th style="width: 80px;">
+                  <span class="has-tooltip">
+        WDID
+        <span class="has-tooltip-icon">?</span>
+                  <span class="tooltip-text">Unique Workday ID of the QA analyst.</span>
+                  </span>
+                </th>
+                <th style="width: 120px;">
+                  <span class="has-tooltip">
+        Name
+        <span class="has-tooltip-icon">?</span>
+                  <span class="tooltip-text">Full name of the QA analyst.</span>
+                  </span>
+                </th>
+                <th style="width: 80px;">
+                  <span class="has-tooltip">
+        Exempt
+        <span class="has-tooltip-icon">?</span>
+                  <span class="tooltip-text">
+          Mark this team member as exempt (e.g., recently promoted, insufficient data). Exempted rows will be greyed out and skipped during submission.
+        </span>
+                  </span>
+                </th>
+                <th style="width: 80px;">
+
+                  <span class="has-tooltip">
+                  Workshops Delivered
+                  <span class="has-tooltip-icon">?</span>
+                  <span class="tooltip-text">Number of workshops delivered by this analyst.</span>
+                  </span>
+                </th>
+                <th style="width: 80px;">
+                  <span class="has-tooltip">
+                  Workshops Required
+                  <span class="has-tooltip-icon">?</span>
+                  <span class="tooltip-text">Number of workshops required for this analyst.</span>
+                  </span>
+                </th>
+                <th style="width: 300px;">
+                  <span class="has-tooltip">
+                  Comments
+                  <span class="has-tooltip-icon">?</span>
+                  <span class="tooltip-text">Optional notes or comments for this team member. Required if any numeric KPI value is 0.</span>
+                  </span>
+                </th>
+                <th style="width: 50px;">
+                  <span class="has-tooltip">
+                  Status
+                  <span class="has-tooltip-icon">?</span>
+                  <span class="tooltip-text">Live validation status.</span>
+                  </span>
+                </th>
+              </tr>
+            </thead>
+            <tbody id="teamDevelopmentTable"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- PPD Section -->
+      <div id="ppdSection" class="card hidden">
+        <div class="card-header">PPD (Professional Development) Inputs</div>
+        <div class="roster-note">
+          ⚠️ <strong>Enter whole numbers only</strong> (e.g., 5, 10, 15). Do not enter percentages or include the %
+          symbol.
+        </div>
+        <button class="btn btn-utility" onclick="fillEmptyFields('ppd')">Fill empty KPI cells with 0</button>
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th style="width: 80px;">
+                  <span class="has-tooltip">
+        WDID
+        <span class="has-tooltip-icon">?</span>
+                  <span class="tooltip-text">Unique Workday ID of the QA analyst.</span>
+                  </span>
+                </th>
+                <th style="width: 120px;">
+                  <span class="has-tooltip">
+        Name
+        <span class="has-tooltip-icon">?</span>
+                  <span class="tooltip-text">Full name of the QA analyst.</span>
+                  </span>
+                </th>
+                <th style="width: 80px;">
+                  <span class="has-tooltip">
+        Exempt
+        <span class="has-tooltip-icon">?</span>
+                  <span class="tooltip-text">
+          Mark this team member as exempt (e.g., recently promoted, insufficient data). Exempted rows will be greyed out and skipped during submission.
+        </span>
+                  </span>
+                </th>
+                <th style="width: 80px;">
+
+                  <span class="has-tooltip">
+                  Courses Completed
+                  <span class="has-tooltip-icon">?</span>
+                  <span class="tooltip-text">Number of professional development courses completed.</span>
+                  </span>
+                </th>
+                <th style="width: 80px;">
+                  <span class="has-tooltip">
+                  Courses Required
+                  <span class="has-tooltip-icon">?</span>
+                  <span class="tooltip-text">Number of professional development courses required.</span>
+                  </span>
+                </th>
+                <th style="width: 300px;">
+                  <span class="has-tooltip">
+                  Comments
+                  <span class="has-tooltip-icon">?</span>
+                  <span class="tooltip-text">Optional notes or comments for this team member. Required if any numeric KPI value is 0.</span>
+                  </span>
+                </th>
+                <th style="width: 50px;">
+                  <span class="has-tooltip">
+                  Status
+                  <span class="has-tooltip-icon">?</span>
+                  <span class="tooltip-text">Live validation status.</span>
+                  </span>
+                </th>
+              </tr>
+            </thead>
+            <tbody id="ppdTable"></tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <!-- Bottom Action Bar -->
+  <div class="action-bar">
+    <div class="action-bar-left">
+      Your KPIs will only be stored after you submit.
+    </div>
+    <div class="action-bar-right">
+      <button class="btn btn-reset" onclick="resetForm()">Reset Form</button>
+      <button class="btn btn-secondary" onclick="cancelSubmission()">Cancel</button>
+      <button class="btn btn-primary" id="submitBtn" disabled onclick="submitKPIs()">Submit KPIs</button>
+    </div>
+  </div>
+
+  <script>
+    let currentTeam = [];
+        let tlDetails = null;
+
+        // Combined function: Load TL details and team in one action
+        function loadTeam() {
+            const tlWdid = document.getElementById('tlWdid').value.trim();
+
+            if (!tlWdid) {
+                showError('Please enter your Workday ID.');
+                return;
+            }
+
+            // Show loading state
+            document.getElementById('loadingSpinner').classList.remove('hidden');
+            document.getElementById('loadTeamBtn').disabled = true;
+            document.getElementById('loadTeamBtn').textContent = 'Loading...';
+            hideError();
+            hideSuccess();
+            hideTeamSections();
+            document.getElementById('tlDetailsSection').classList.add('hidden');
+
+            // Call combined server function
+            google.script.run
+                .withSuccessHandler(function (result) {
+                    document.getElementById('loadingSpinner').classList.add('hidden');
+                    document.getElementById('loadTeamBtn').disabled = false;
+                    document.getElementById('loadTeamBtn').textContent = 'Load Team';
+
+                    if (!result.success) {
+                        showError(result.message || 'Error loading team data.');
+                        return;
+                    }
+
+                    // Store TL details
+                    tlDetails = result.tlDetails;
+
+                    // Display TL details (including email and country)
+document.getElementById('tlName').textContent = tlDetails.name || '—';
+document.getElementById('tlEmail').textContent = tlDetails.email || '—';
+document.getElementById('tlManager').textContent = tlDetails.manager || '—';
+document.getElementById('tlSrManager').textContent = tlDetails.sr_manager || '—';
+document.getElementById('tlRole').textContent = tlDetails.role || '—';
+document.getElementById('tlProgram').textContent = tlDetails.program || '—';
+document.getElementById('tlCountry').textContent = tlDetails.country || '—';
+document.getElementById('tlRegion').textContent = tlDetails.region || '—';
+document.getElementById('tlDetailsSection').classList.remove('hidden');
+
+
+                    // Check if team members exist
+                    if (!result.teamMembers || result.teamMembers.length === 0) {
+                        showError(`No team members found for WDID: ${tlWdid}. You may not have any direct reports in the roster.`);
+                        return;
+                    }
+
+                    // Store and display team
+                    currentTeam = result.teamMembers;
+                    displayTeam(result.teamMembers);
+                    initializeKPITables(result.teamMembers);
+                    showTeamSections();
+                })
+                                .withFailureHandler(function (err) {
+                    console.error('Error loading team:', err);
+                    document.getElementById('loadingSpinner').classList.add('hidden');
+                    document.getElementById('loadTeamBtn').disabled = false;
+                    document.getElementById('loadTeamBtn').textContent = 'Load Team';
+                    showError('Error loading team data. Please try again or contact support.');
+                })
+                .loadTLAndTeam(tlWdid);
+        }
+
+        function displayTeam(team) {
+            const teamList = document.getElementById('teamList');
+            teamList.innerHTML = '';
+
+            team.forEach(member => {
+                const card = document.createElement('div');
+                card.className = 'team-member-card';
+                card.innerHTML = `
+                    <span class="team-member-wdid">${member.wdid}</span>
+                    <span class="team-member-name">${member.name}</span>
+                `;
+                teamList.appendChild(card);
+            });
+
+            document.getElementById('teamCount').textContent = `Team Members Found: ${team.length}`;
+        }
+// Track exempt status for each team member
+let exemptMembers = {};
+
+function toggleExempt(wdid, table) {
+    // Initialize exempt tracking for this member if needed
+    if (!exemptMembers[wdid]) {
+        exemptMembers[wdid] = {};
+    }
+
+    // Toggle exempt status
+    const isExempt = !exemptMembers[wdid][table];
+    exemptMembers[wdid][table] = isExempt;
+
+    // Get the button and row
+    const button = document.querySelector(`.btn-exempt[data-wdid="${wdid}"][data-table="${table}"]`);
+    const row = button.closest('tr');
+
+    if (isExempt) {
+        // Mark as exempt
+        button.textContent = 'Exempted ✓';
+        button.classList.add('active');
+        row.classList.add('exempt-row');
+
+        // Clear all inputs in this row
+        const inputs = row.querySelectorAll('input, textarea');
+        inputs.forEach(input => {
+            if (!input.classList.contains('read-only')) {
+                input.value = '';
+                input.classList.remove('error');
+            }
+        });
+
+        // Clear status icon
+        const statusIcon = row.querySelector(`[id$="-status-${wdid}"]`);
+        if (statusIcon) statusIcon.innerHTML = '';
+
+    } else {
+        // Remove exempt
+        button.textContent = 'Exempt';
+        button.classList.remove('active');
+        row.classList.remove('exempt-row');
+    }
+
+    // Revalidate form
+    checkFormValidity();
+}
+
+        function initializeKPITables(team) {
+    // ---------- Accuracy table ----------
+    const accuracyTbody = document.getElementById('accuracyTable');
+    accuracyTbody.innerHTML = '';
+
+    team.forEach(member => {
+        const row = accuracyTbody.insertRow();
+        row.innerHTML = `
+    <td class="read-only centered-cell" title="${member.wdid}">${member.wdid}</td>
+<td class="read-only centered-cell" title="${member.name}">${member.name}</td>
+
+    <td style="text-align: center;">
+        <button class="btn-exempt" 
+                data-wdid="${member.wdid}" 
+                data-table="accuracy"
+                onclick="toggleExempt('${member.wdid}', 'accuracy')">
+            Exempt
+        </button>
+    </td>
+    <td>
+        <input type="number"
+
+                       class="accuracy-input"
+                       data-wdid="${member.wdid}"
+                       data-field="calAccurate"
+                       placeholder="0"
+                       min="0"
+                       oninput="validateAccuracy('${member.wdid}')">
+            </td>
+            <td>
+                <input type="number"
+                       class="accuracy-input"
+                       data-wdid="${member.wdid}"
+                       data-field="calPerformed"
+                       placeholder="0"
+                       min="0"
+                       oninput="validateAccuracy('${member.wdid}')">
+            </td>
+            <td>
+                <input type="number"
+                       class="accuracy-input"
+                       data-wdid="${member.wdid}"
+                       data-field="validDisputes"
+                       placeholder="0"
+                       min="0"
+                       oninput="validateAccuracy('${member.wdid}')">
+            </td>
+            <td>
+                <input type="number"
+                       class="accuracy-input"
+                       data-wdid="${member.wdid}"
+                       data-field="totalAudits"
+                       placeholder="0"
+                       min="0"
+                       oninput="validateAccuracy('${member.wdid}')">
+            </td>
+            <td>
+                <input type="number"
+                       class="accuracy-input"
+                       data-wdid="${member.wdid}"
+                       data-field="accurateAudits"
+                       placeholder="0"
+                       min="0"
+                       oninput="validateAccuracy('${member.wdid}')">
+            </td>
+            <td>
+                <textarea class="accuracy-input"
+                          data-wdid="${member.wdid}"
+                          data-field="notes"
+                          placeholder="Optional comments unless zero is reported..."
+                          oninput="validateAccuracy('${member.wdid}')"></textarea>
+            </td>
+            <td class="status-cell"><span id="accuracy-status-${member.wdid}"></span></td>
+        `;
+    });
+
+    // ---------- Productivity table ----------
+    const productivityTbody = document.getElementById('productivityTable');
+    productivityTbody.innerHTML = '';
+
+    team.forEach(member => {
+        const row = productivityTbody.insertRow();
+        row.innerHTML = `
+    <td class="read-only centered-cell" title="${member.wdid}">${member.wdid}</td>
+<td class="read-only centered-cell" title="${member.name}">${member.name}</td>
+    <td style="text-align: center;">
+        <button class="btn-exempt" 
+        data-wdid="${member.wdid}" 
+        data-table="productivity" 
+        onclick="toggleExempt('${member.wdid}', 'productivity')">  
+    Exempt
+</button>
+
+    </td>
+    <td>
+        <input type="number"
+
+                       class="productivity-input"
+                       data-wdid="${member.wdid}"
+                       data-field="qaCompleted"
+                       placeholder="0"
+                       min="0"
+                       oninput="validateProductivity('${member.wdid}')">
+            </td>
+            <td>
+                <input type="number"
+                       class="productivity-input"
+                       data-wdid="${member.wdid}"
+                       data-field="qaTarget"
+                       placeholder="0"
+                       min="0"
+                       oninput="validateProductivity('${member.wdid}')">
+            </td>
+            <td>
+                <input type="number"
+                       class="productivity-input"
+                       data-wdid="${member.wdid}"
+                       data-field="vocCompleted"
+                       placeholder="0"
+                       min="0"
+                       oninput="validateProductivity('${member.wdid}')">
+            </td>
+            <td>
+                <input type="number"
+                       class="productivity-input"
+                       data-wdid="${member.wdid}"
+                       data-field="vocTarget"
+                       placeholder="0"
+                       min="0"
+                       oninput="validateProductivity('${member.wdid}')">
+            </td>
+            <td>
+                <input type="number"
+                       class="productivity-input"
+                       data-wdid="${member.wdid}"
+                       data-field="calCompleted"
+                       placeholder="0"
+                       min="0"
+                       oninput="validateProductivity('${member.wdid}')">
+            </td>
+            <td>
+                <input type="number"
+                       class="productivity-input"
+                       data-wdid="${member.wdid}"
+                       data-field="calTarget"
+                       placeholder="0"
+                       min="0"
+                       oninput="validateProductivity('${member.wdid}')">
+            </td>
+            <td>
+                <textarea class="productivity-input"
+                          data-wdid="${member.wdid}"
+                          data-field="notes"
+                          placeholder="Optional comments unless zero is reported..."
+                          oninput="validateProductivity('${member.wdid}')"></textarea>
+            </td>
+            <td class="status-cell"><span id="productivity-status-${member.wdid}"></span></td>
+        `;
+    });
+
+    // ---------- Quality % to Goal table ----------
+    const qualityTbody = document.getElementById('qualityTable');
+    qualityTbody.innerHTML = '';
+
+    team.forEach(member => {
+        const row = qualityTbody.insertRow();
+        row.innerHTML = `
+    <td class="read-only centered-cell" title="${member.wdid}">${member.wdid}</td>
+<td class="read-only centered-cell" title="${member.name}">${member.name}</td>
+    <td style="text-align: center;">
+        <button class="btn-exempt" 
+        data-wdid="${member.wdid}" 
+        data-table="quality" 
+        onclick="toggleExempt('${member.wdid}', 'quality')"> 
+    Exempt
+</button>
+
+    </td>
+   <td>
+  <div class="percentage-input-wrapper">
+    <input type="number"
+           class="quality-input"
+           data-wdid="${member.wdid}"
+           data-field="qualityPctToGoal"
+           placeholder="0"
+           min="0"
+           step="0.01"
+           oninput="validateQuality('${member.wdid}')">
+  </div>
+</td>
+
+
+            <td>
+                <textarea class="quality-input"
+                          data-wdid="${member.wdid}"
+                          data-field="notes"
+                          placeholder="Optional comments unless zero is reported..."
+                          oninput="validateQuality('${member.wdid}')"></textarea>
+            </td>
+            <td class="status-cell"><span id="quality-status-${member.wdid}"></span></td>
+        `;
+    });
+
+    // ---------- VOC % to Goal table ----------
+    const vocTbody = document.getElementById('vocTable');
+    vocTbody.innerHTML = '';
+
+    team.forEach(member => {
+        const row = vocTbody.insertRow();
+        row.innerHTML = `
+    <td class="read-only centered-cell" title="${member.wdid}">${member.wdid}</td>
+<td class="read-only centered-cell" title="${member.name}">${member.name}</td>
+    <td style="text-align: center;">
+        <button class="btn-exempt" 
+        data-wdid="${member.wdid}" 
+        data-table="voc" 
+        onclick="toggleExempt('${member.wdid}', 'voc')">  
+    Exempt
+</button>
+
+    </td>
+    <td>
+  <div class="percentage-input-wrapper">
+    <input type="number"
+           class="voc-input"
+           data-wdid="${member.wdid}"
+           data-field="vocPctToGoal"
+           placeholder="0"
+           min="0"
+           step="0.01"
+           oninput="validateVOC('${member.wdid}')">
+  </div>
+</td>
+
+            <td>
+                <textarea class="voc-input"
+                          data-wdid="${member.wdid}"
+                          data-field="notes"
+                          placeholder="Optional comments unless zero is reported..."
+                          oninput="validateVOC('${member.wdid}')"></textarea>
+            </td>
+            <td class="status-cell"><span id="voc-status-${member.wdid}"></span></td>
+        `;
+    });
+
+    // ---------- Team Development table ----------
+    const teamDevTbody = document.getElementById('teamDevelopmentTable');
+    teamDevTbody.innerHTML = '';
+
+    team.forEach(member => {
+        const row = teamDevTbody.insertRow();
+        row.innerHTML = `
+    <td class="read-only centered-cell" title="${member.wdid}">${member.wdid}</td>
+<td class="read-only centered-cell" title="${member.name}">${member.name}</td>
+    <td style="text-align: center;">
+        <button class="btn-exempt" 
+        data-wdid="${member.wdid}" 
+        data-table="teamDevelopment" 
+        onclick="toggleExempt('${member.wdid}', 'teamDevelopment')"> 
+    Exempt
+</button>
+
+    </td>
+    <td>
+        <input type="number"
+
+                       class="teamDevelopment-input"
+                       data-wdid="${member.wdid}"
+                       data-field="workshopsDelivered"
+                       placeholder="0"
+                       min="0"
+                       oninput="validateTeamDevelopment('${member.wdid}')">
+            </td>
+            <td>
+                <input type="number"
+                       class="teamDevelopment-input"
+                       data-wdid="${member.wdid}"
+                       data-field="workshopsRequired"
+                       placeholder="0"
+                       min="0"
+                       oninput="validateTeamDevelopment('${member.wdid}')">
+            </td>
+            <td>
+                <textarea class="teamDevelopment-input"
+                          data-wdid="${member.wdid}"
+                          data-field="notes"
+                          placeholder="Optional comments unless zero is reported..."
+                          oninput="validateTeamDevelopment('${member.wdid}')"></textarea>
+            </td>
+            <td class="status-cell"><span id="teamDevelopment-status-${member.wdid}"></span></td>
+        `;
+    });
+
+    // ---------- PPD table ----------
+    const ppdTbody = document.getElementById('ppdTable');
+    ppdTbody.innerHTML = '';
+
+    team.forEach(member => {
+        const row = ppdTbody.insertRow();
+        row.innerHTML = `
+    <td class="read-only centered-cell" title="${member.wdid}">${member.wdid}</td>
+<td class="read-only centered-cell" title="${member.name}">${member.name}</td>
+    <td style="text-align: center;">
+        <button class="btn-exempt" 
+        data-wdid="${member.wdid}" 
+        data-table="ppd"   
+        onclick="toggleExempt('${member.wdid}', 'ppd')"> 
+    Exempt
+</button>
+
+    </td>
+    <td>
+        <input type="number"
+
+                       class="ppd-input"
+                       data-wdid="${member.wdid}"
+                       data-field="coursesCompleted"
+                       placeholder="0"
+                       min="0"
+                       oninput="validatePPD('${member.wdid}')">
+            </td>
+            <td>
+                <input type="number"
+                       class="ppd-input"
+                       data-wdid="${member.wdid}"
+                       data-field="coursesRequired"
+                       placeholder="0"
+                       min="0"
+                       oninput="validatePPD('${member.wdid}')">
+            </td>
+            <td>
+                <textarea class="ppd-input"
+                          data-wdid="${member.wdid}"
+                          data-field="notes"
+                          placeholder="Optional comments unless zero is reported..."
+                          oninput="validatePPD('${member.wdid}')"></textarea>
+            </td>
+            <td class="status-cell"><span id="ppd-status-${member.wdid}"></span></td>
+        `;
+    });
+}
+
+
+        function validateAccuracy(wdid) {
+            // Skip validation if exempt
+            if (exemptMembers[wdid]?.accuracy) {
+                return;
+            }
+
+            const inputs = document.querySelectorAll(`.accuracy-input[data-wdid="${wdid}"]`);
+            let isValid = true;
+            let errors = [];
+            let hasZeroNumericValue = false; // New flag
+
+            const data = {};
+            let hasAnyNumericValue = false; // Renamed from hasAnyValue for clarity
+
+            // Reset error classes for this specific row's inputs and notes
+            inputs.forEach(input => {
+                input.classList.remove('error');
+            });
+
+            const numericInputs = Array.from(inputs).filter(input => input.tagName !== 'TEXTAREA');
+            const notesInput = Array.from(inputs).find(input => input.tagName === 'TEXTAREA');
+
+            numericInputs.forEach(input => {
+                // Check for percentage symbol (already exists)
+                if (input.value.includes('%')) {
+                    input.classList.add('error');
+                    isValid = false;
+                    if (!errors.includes('No % symbols - enter numbers only')) {
+                        errors.push('No % symbols - enter numbers only');
+                    }
+                    return; // Skip further validation for this input if it has '%'
+                }
+
+                const value = parseFloat(input.value);
+                data[input.dataset.field] = value;
+
+                if (input.value !== '' && !isNaN(value)) {
+                    hasAnyNumericValue = true;
+                    if (value === 0) { // Check for zero value
+                        hasZeroNumericValue = true;
+                    }
+                }
+
+                if (value < 0) {
+                    input.classList.add('error');
+                    isValid = false;
+                    errors.push('No negative values');
+                }
+            });
+
+            // Validate notes for zero numeric values
+            if (hasZeroNumericValue && notesInput) {
+                if (notesInput.value.trim() === '') {
+                    notesInput.classList.add('error');
+                    isValid = false;
+                    if (!errors.includes('Comment required for zero KPI values')) {
+                        errors.push('Comment required for zero KPI values');
+                    }
+                }
+            }
+            if (notesInput) { // Ensure notes data is captured if notesInput exists
+                data[notesInput.dataset.field] = notesInput.value.trim(); 
+            }
+
+            if (hasAnyNumericValue) {
+                numericInputs.forEach(input => {
+                    if (input.value === '' || isNaN(parseFloat(input.value))) {
+                        input.classList.add('error');
+                        isValid = false;
+                        if (!errors.includes('All numeric fields required')) {
+                            errors.push('All numeric fields required');
+                        }
+                    }
+                });
+            }
+
+            // Existing cross-field validations
+            if (!isNaN(data.calAccurate) && !isNaN(data.calPerformed) && data.calAccurate > data.calPerformed) {
+                // Find and add error class to both calAccurate and calPerformed inputs
+                numericInputs.find(i => i.dataset.field === 'calAccurate')?.classList.add('error');
+                numericInputs.find(i => i.dataset.field === 'calPerformed')?.classList.add('error');
+                isValid = false;
+                errors.push('Accurate ≤ Performed');
+            }
+
+            if (!isNaN(data.accurateAudits) && !isNaN(data.totalAudits) && data.accurateAudits > data.totalAudits) {
+                // Find and add error class to both accurateAudits and totalAudits inputs
+                numericInputs.find(i => i.dataset.field === 'accurateAudits')?.classList.add('error');
+                numericInputs.find(i => i.dataset.field === 'totalAudits')?.classList.add('error');
+                isValid = false;
+                errors.push('Accurate Audits ≤ Total');
+            }
+
+            updateStatus('accuracy', wdid, isValid, hasAnyNumericValue, errors);
+            checkFormValidity();
+        }
+
+        function validateProductivity(wdid) {
+            // Skip validation if exempt
+            if (exemptMembers[wdid]?.productivity) {
+                return;
+            }
+
+            const inputs = document.querySelectorAll(`.productivity-input[data-wdid="${wdid}"]`);
+            let isValid = true;
+            let errors = [];
+            let hasZeroNumericValue = false;
+
+            const data = {};
+            let hasAnyNumericValue = false;
+
+            inputs.forEach(input => {
+                input.classList.remove('error');
+            });
+
+            const numericInputs = Array.from(inputs).filter(input => input.tagName !== 'TEXTAREA');
+            const notesInput = Array.from(inputs).find(input => input.tagName === 'TEXTAREA');
+
+            numericInputs.forEach(input => {
+                if (input.value.includes('%')) {
+                    input.classList.add('error');
+                    isValid = false;
+                    if (!errors.includes('No % symbols - enter numbers only')) {
+                        errors.push('No % symbols - enter numbers only');
+                    }
+                    return;
+                }
+
+                const value = parseFloat(input.value);
+                data[input.dataset.field] = value;
+
+                if (input.value !== '' && !isNaN(value)) {
+                    hasAnyNumericValue = true;
+                    if (value === 0) {
+                        hasZeroNumericValue = true;
+                    }
+                }
+
+                if (value < 0) {
+                    input.classList.add('error');
+                    isValid = false;
+                    errors.push('No negative values');
+                }
+            });
+
+            if (hasZeroNumericValue && notesInput) {
+                if (notesInput.value.trim() === '') {
+                    notesInput.classList.add('error');
+                    isValid = false;
+                    if (!errors.includes('Comment required for zero KPI values')) {
+                        errors.push('Comment required for zero KPI values');
+                    }
+                }
+            }
+            if (notesInput) {
+                data[notesInput.dataset.field] = notesInput.value.trim();
+            }
+
+            if (hasAnyNumericValue) {
+                numericInputs.forEach(input => {
+                    if (input.value === '' || isNaN(parseFloat(input.value))) {
+                        input.classList.add('error');
+                        isValid = false;
+                        if (!errors.includes('All numeric fields required')) {
+                            errors.push('All numeric fields required');
+                        }
+                    }
+                });
+            }
+
+            updateStatus('productivity', wdid, isValid, hasAnyNumericValue, errors);
+            checkFormValidity();
+        }
+
+                function validateQuality(wdid) {
+   // Skip validation if exempt
+    if (exemptMembers[wdid]?.quality) {
+        return;
+    }
+
+    const inputs = document.querySelectorAll(`.quality-input[data-wdid="${wdid}"]`);
+    let isValid = true;
+    let errors = [];
+    let hasZeroNumericValue = false;
+
+    const data = {};
+    let hasAnyNumericValue = false;
+
+    inputs.forEach(input => {
+        input.classList.remove('error');
+        if (input.closest('.percentage-input-wrapper')) {
+            input.closest('.percentage-input-wrapper').classList.remove('error');
+        }
+    });
+
+    const numericInputs = Array.from(inputs).filter(input => input.tagName !== 'TEXTAREA');
+    const notesInput = Array.from(inputs).find(input => input.tagName === 'TEXTAREA');
+
+
+    numericInputs.forEach(input => {
+    if (input.value.includes('%')) {
+    input.classList.add('error');
+    input.closest('.percentage-input-wrapper')?.classList.add('error');
+    isValid = false;
+    if (!errors.includes('No % symbols - enter numbers only')) {
+        errors.push('No % symbols - enter numbers only');
+    }
+    return;
+}
+
+
+    const value = parseFloat(input.value);
+    data[input.dataset.field] = value;
+
+    if (input.value !== '' && !isNaN(value)) {
+        hasAnyNumericValue = true;
+        if (value === 0) {
+            hasZeroNumericValue = true;
+        }
+    }
+
+    if (value < 0) {
+    input.classList.add('error');
+    input.closest('.percentage-input-wrapper')?.classList.add('error');
+    isValid = false;
+    errors.push('No negative values');
+}
+
+});
+
+    if (hasZeroNumericValue && notesInput) {
+        if (notesInput.value.trim() === '') {
+            notesInput.classList.add('error');
+            isValid = false;
+            if (!errors.includes('Comment required for zero KPI values')) {
+                errors.push('Comment required for zero KPI values');
+            }
+        }
+    }
+    if (notesInput) {
+        data[notesInput.dataset.field] = notesInput.value.trim();
+    }
+
+
+    if (hasAnyNumericValue) {
+        numericInputs.forEach(input => {
+            if (input.value === '' || isNaN(parseFloat(input.value))) {
+    input.classList.add('error');
+    input.closest('.percentage-input-wrapper')?.classList.add('error');
+    isValid = false;
+    if (!errors.includes('All numeric fields required')) {
+        errors.push('All numeric fields required');
+    }
+}
+
+        });
+    }
+
+    updateStatus('quality', wdid, isValid, hasAnyNumericValue, errors);
+    checkFormValidity();
+}
+
+function validateVOC(wdid) {
+    // Skip validation if exempt
+    if (exemptMembers[wdid]?.voc) {
+        return;
+    }
+
+    const inputs = document.querySelectorAll(`.voc-input[data-wdid="${wdid}"]`);
+    let isValid = true;
+    let errors = [];
+    let hasZeroNumericValue = false;
+
+    const data = {};
+    let hasAnyNumericValue = false;
+
+    inputs.forEach(input => {
+        input.classList.remove('error');
+        if (input.closest('.percentage-input-wrapper')) {
+            input.closest('.percentage-input-wrapper').classList.remove('error');
+        }
+    });
+
+    const numericInputs = Array.from(inputs).filter(input => input.tagName !== 'TEXTAREA');
+    const notesInput = Array.from(inputs).find(input => input.tagName === 'TEXTAREA');
+
+    numericInputs.forEach(input => {
+    if (input.value.includes('%')) {
+    input.classList.add('error');
+    input.closest('.percentage-input-wrapper')?.classList.add('error');
+    isValid = false;
+    if (!errors.includes('No % symbols - enter numbers only')) {
+        errors.push('No % symbols - enter numbers only');
+    }
+    return;
+}
+
+
+    const value = parseFloat(input.value);
+    data[input.dataset.field] = value;
+
+    if (input.value !== '' && !isNaN(value)) {
+        hasAnyNumericValue = true;
+        if (value === 0) {
+            hasZeroNumericValue = true;
+        }
+    }
+
+    if (value < 0) {
+    input.classList.add('error');
+    input.closest('.percentage-input-wrapper')?.classList.add('error');
+    isValid = false;
+    errors.push('No negative values');
+}
+
+});
+
+    if (hasZeroNumericValue && notesInput) {
+        if (notesInput.value.trim() === '') {
+            notesInput.classList.add('error');
+            isValid = false;
+            if (!errors.includes('Comment required for zero KPI values')) {
+                errors.push('Comment required for zero KPI values');
+            }
+        }
+    }
+    if (notesInput) {
+        data[notesInput.dataset.field] = notesInput.value.trim();
+    }
+
+
+    if (hasAnyNumericValue) {
+        numericInputs.forEach(input => {
+            // Skip textarea for required field validation
+            if (input.tagName === 'TEXTAREA') return;
+
+            if (input.value === '' || isNaN(parseFloat(input.value))) {
+    input.classList.add('error');
+    input.closest('.percentage-input-wrapper')?.classList.add('error');
+    isValid = false;
+    if (!errors.includes('All numeric fields required')) {
+        errors.push('All numeric fields required');
+    }
+}
+
+        });
+    }
+
+    updateStatus('voc', wdid, isValid, hasAnyNumericValue, errors);
+    checkFormValidity();
+}
+
+function validateTeamDevelopment(wdid) {
+    // Skip validation if exempt
+    if (exemptMembers[wdid]?.teamDevelopment) {
+        return;
+    }
+
+    const inputs = document.querySelectorAll(`.teamDevelopment-input[data-wdid="${wdid}"]`);
+    let isValid = true;
+    let errors = [];
+    let hasZeroNumericValue = false;
+
+    const data = {};
+    let hasAnyNumericValue = false;
+
+    inputs.forEach(input => {
+        input.classList.remove('error');
+    });
+
+    const numericInputs = Array.from(inputs).filter(input => input.tagName !== 'TEXTAREA');
+    const notesInput = Array.from(inputs).find(input => input.tagName === 'TEXTAREA');
+
+    numericInputs.forEach(input => {
+    // Check for percentage symbol
+    if (input.value.includes('%')) {
+        input.classList.add('error');
+        isValid = false;
+        if (!errors.includes('No % symbols - enter numbers only')) {
+            errors.push('No % symbols - enter numbers only');
+        }
+        return;
+    }
+
+    const value = parseFloat(input.value);
+    data[input.dataset.field] = value;
+
+    if (input.value !== '' && !isNaN(value)) {
+        hasAnyNumericValue = true;
+        if (value === 0) {
+            hasZeroNumericValue = true;
+        }
+    }
+
+    if (value < 0) {
+        input.classList.add('error');
+        isValid = false;
+        errors.push('No negative values');
+    }
+});
+
+    if (hasZeroNumericValue && notesInput) {
+        if (notesInput.value.trim() === '') {
+            notesInput.classList.add('error');
+            isValid = false;
+            if (!errors.includes('Comment required for zero KPI values')) {
+                errors.push('Comment required for zero KPI values');
+            }
+        }
+    }
+    if (notesInput) {
+        data[notesInput.dataset.field] = notesInput.value.trim();
+    }
+
+    if (hasAnyNumericValue) {
+        numericInputs.forEach(input => {
+            if (input.value === '' || isNaN(parseFloat(input.value))) {
+                input.classList.add('error');
+                isValid = false;
+                if (!errors.includes('All numeric fields required')) {
+                    errors.push('All numeric fields required');
+                }
+            }
+        });
+    }
+
+    updateStatus('teamDevelopment', wdid, isValid, hasAnyNumericValue, errors);
+    checkFormValidity();
+}
+
+function validatePPD(wdid) {
+    // Skip validation if exempt
+    if (exemptMembers[wdid]?.ppd) {
+        return;
+    }
+
+    const inputs = document.querySelectorAll(`.ppd-input[data-wdid="${wdid}"]`);
+    let isValid = true;
+    let errors = [];
+    let hasZeroNumericValue = false;
+
+    const data = {};
+    let hasAnyNumericValue = false;
+
+    inputs.forEach(input => {
+        input.classList.remove('error');
+    });
+
+    const numericInputs = Array.from(inputs).filter(input => input.tagName !== 'TEXTAREA');
+    const notesInput = Array.from(inputs).find(input => input.tagName === 'TEXTAREA');
+
+    numericInputs.forEach(input => {
+    // Check for percentage symbol
+    if (input.value.includes('%')) {
+        input.classList.add('error');
+        isValid = false;
+        if (!errors.includes('No % symbols - enter numbers only')) {
+            errors.push('No % symbols - enter numbers only');
+        }
+        return;
+    }
+
+    const value = parseFloat(input.value);
+    data[input.dataset.field] = value;
+
+    if (input.value !== '' && !isNaN(value)) {
+        hasAnyNumericValue = true;
+        if (value === 0) {
+            hasZeroNumericValue = true;
+        }
+    }
+
+    if (value < 0) {
+        input.classList.add('error');
+        isValid = false;
+        errors.push('No negative values');
+    }
+});
+
+    if (hasZeroNumericValue && notesInput) {
+        if (notesInput.value.trim() === '') {
+            notesInput.classList.add('error');
+            isValid = false;
+            if (!errors.includes('Comment required for zero KPI values')) {
+                errors.push('Comment required for zero KPI values');
+            }
+        }
+    }
+    if (notesInput) {
+        data[notesInput.dataset.field] = notesInput.value.trim();
+    }
+
+    if (hasAnyNumericValue) {
+        numericInputs.forEach(input => {
+            if (input.value === '' || isNaN(parseFloat(input.value))) {
+                input.classList.add('error');
+                isValid = false;
+                if (!errors.includes('All numeric fields required')) {
+                    errors.push('All numeric fields required');
+                }
+            }
+        });
+    }
+
+    updateStatus('ppd', wdid, isValid, hasAnyNumericValue, errors);
+    checkFormValidity();
+}
+
+
+
+        function updateStatus(type, wdid, isValid, hasData, errors) {
+            const statusElement = document.getElementById(`${type}-status-${wdid}`);
+
+            if (errors.length > 0) {
+                statusElement.innerHTML = `<span class="status-icon status-error" title="${errors.join(', ')}">✗</span>`;
+            } else if (hasData && isValid) {
+                statusElement.innerHTML = `<span class="status-icon status-success" title="Valid">✓</span>`;
+            } else if (hasData) { // If hasData but not isValid (meaning some fields are empty but no explicit errors yet)
+                statusElement.innerHTML = `<span class="status-icon status-warning" title="Incomplete">⚠</span>`;
+            } else { // No data entered yet
+                statusElement.innerHTML = '';
+            }
+        }
+
+        function checkFormValidity() {
+            const errorInputs = document.querySelectorAll('.accuracy-input.error, .productivity-input.error, .quality-input.error, .voc-input.error, .teamDevelopment-input.error, .ppd-input.error');
+            const submitBtn = document.getElementById('submitBtn');
+
+            // If there are any errors, disable the button.
+            // Also, if no team is loaded, or if all team members are exempt for all KPIs, the form might not be valid for submission.
+            // For now, rely on errorInputs and currentTeam.length > 0.
+            if (errorInputs.length === 0 && currentTeam.length > 0) {
+                submitBtn.disabled = false;
+            } else {
+                submitBtn.disabled = true;
+            }
+        }
+
+                function fillEmptyFields(type) {
+            const inputs = document.querySelectorAll(`.${type}-input`);
+            inputs.forEach(input => {
+                // Skip textarea fields if they already have content, otherwise fill with empty string
+                if (input.tagName === 'TEXTAREA') {
+                    if (!input.value || input.value.trim() === '') {
+                        input.value = ''; // Ensure it's explicitly empty to trigger validation if needed for 0s
+                    }
+                    return;
+                }
+
+                if (!input.value || input.value === '') {
+                    input.value = '0';
+                }
+            });
+
+            // After filling, re-validate all rows for the given type to update statuses
+            currentTeam.forEach(member => {
+                if (type === 'accuracy') {
+                    validateAccuracy(member.wdid);
+                } else if (type === 'productivity') {
+                    validateProductivity(member.wdid);
+                } else if (type === 'quality') {
+                    validateQuality(member.wdid);
+                } else if (type === 'voc') {
+                    validateVOC(member.wdid);
+                } else if (type === 'teamDevelopment') {
+                    validateTeamDevelopment(member.wdid);
+                } else if (type === 'ppd') {
+                    validatePPD(member.wdid);
+                }
+            });
+        }
+
+
+                function submitKPIs() {
+                  // Submission-time validation
+  if (!validateBeforeSubmit()) return;
+            const month = document.getElementById('month').value;
+            const year = document.getElementById('year').value;
+            const teamCount = currentTeam.length;
+            const tlWdid = document.getElementById('tlWdid').value;
+
+            const submissionData = {
+                tlWdid: tlWdid,
+                month: month,
+                year: year,
+                teamMembers: []
+            };
+
+            currentTeam.forEach(member => {
+                const accuracyInputs = document.querySelectorAll(`.accuracy-input[data-wdid="${member.wdid}"]`);
+                const productivityInputs = document.querySelectorAll(`.productivity-input[data-wdid="${member.wdid}"]`);
+                const qualityInputs = document.querySelectorAll(`.quality-input[data-wdid="${member.wdid}"]`);
+                const vocInputs = document.querySelectorAll(`.voc-input[data-wdid="${member.wdid}"]`);
+                const teamDevInputs = document.querySelectorAll(`.teamDevelopment-input[data-wdid="${member.wdid}"]`);
+                const ppdInputs = document.querySelectorAll(`.ppd-input[data-wdid="${member.wdid}"]`);
+
+                const memberData = {
+    wdid: member.wdid,
+    name: member.name,
+    exempt: {
+        accuracy: exemptMembers[member.wdid]?.accuracy || false,
+        productivity: exemptMembers[member.wdid]?.productivity || false,
+        quality: exemptMembers[member.wdid]?.quality || false,
+        voc: exemptMembers[member.wdid]?.voc || false,
+        teamDevelopment: exemptMembers[member.wdid]?.teamDevelopment || false,
+        ppd: exemptMembers[member.wdid]?.ppd || false
+    },
+    accuracy: {},
+    productivity: {},
+    quality: {},
+    voc: {},
+    teamDevelopment: {},
+    ppd: {}
+};
+
+
+                // Accuracy data
+                accuracyInputs.forEach(input => {
+                    if (input.tagName === 'TEXTAREA') {
+                        memberData.accuracy[input.dataset.field] = input.value.trim();
+                    } else {
+                        memberData.accuracy[input.dataset.field] = parseFloat(input.value) || 0;
+                    }
+                });
+
+                // Productivity data
+                productivityInputs.forEach(input => {
+                    if (input.tagName === 'TEXTAREA') {
+                        memberData.productivity[input.dataset.field] = input.value.trim();
+                    } else {
+                        memberData.productivity[input.dataset.field] = parseFloat(input.value) || 0;
+                    }
+                });
+
+                // Quality data (convert percentage to decimal)
+qualityInputs.forEach(input => {
+    if (input.tagName === 'TEXTAREA') {
+        memberData.quality[input.dataset.field] = input.value.trim();
+    } else {
+        const rawValue = parseFloat(input.value) || 0;
+        // Convert percentage to decimal (e.g., 95.5 → 0.955)
+        memberData.quality[input.dataset.field] = rawValue / 100;
+    }
+});
+
+
+                // VOC data (convert percentage to decimal)
+vocInputs.forEach(input => {
+    if (input.tagName === 'TEXTAREA') {
+        memberData.voc[input.dataset.field] = input.value.trim();
+    } else {
+        const rawValue = parseFloat(input.value) || 0;
+        // Convert percentage to decimal (e.g., 102 → 1.02)
+        memberData.voc[input.dataset.field] = rawValue / 100;
+    }
+});
+
+
+                // Team Development data
+                teamDevInputs.forEach(input => {
+                    if (input.tagName === 'TEXTAREA') {
+                        memberData.teamDevelopment[input.dataset.field] = input.value.trim();
+                    } else {
+                        memberData.teamDevelopment[input.dataset.field] = parseFloat(input.value) || 0;
+                    }
+                });
+
+                // PPD data
+                ppdInputs.forEach(input => {
+                    if (input.tagName === 'TEXTAREA') {
+                        memberData.ppd[input.dataset.field] = input.value.trim();
+                    } else {
+                        memberData.ppd[input.dataset.field] = parseFloat(input.value) || 0;
+                    }
+                });
+
+                submissionData.teamMembers.push(memberData);
+            });
+
+            console.log('Submission Data:', submissionData);
+
+            // Disable submit button and show loading
+            document.getElementById('submitBtn').disabled = true;
+            document.getElementById('submitBtn').textContent = 'Submitting...';
+
+            // Call server-side function to save data
+            google.script.run
+                .withSuccessHandler(function (result) {
+                    document.getElementById('submitBtn').disabled = false;
+                    document.getElementById('submitBtn').textContent = 'Submit KPIs';
+
+                    if (result.success) {
+    // Count exempt members
+    const exemptCount = currentTeam.filter(member => 
+        exemptMembers[member.wdid]?.accuracy || 
+        exemptMembers[member.wdid]?.productivity ||
+        exemptMembers[member.wdid]?.quality ||
+        exemptMembers[member.wdid]?.voc ||
+        exemptMembers[member.wdid]?.teamDevelopment ||
+        exemptMembers[member.wdid]?.ppd
+    ).length;
+    
+    const submittedCount = teamCount - exemptCount;
+    
+    let message = `All KPIs submitted successfully for ${submittedCount} team member${submittedCount !== 1 ? 's' : ''} for ${month}, ${year}.`;
+    if (exemptCount > 0) {
+        message += ` (${exemptCount} member${exemptCount !== 1 ? 's' : ''} exempted)`;
+    }
+    
+    showSuccess(message);
+
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                        
+                        // Clear input fields but keep team loaded
+                        clearKPIInputs();
+                    } else {
+                        showError(result.message || 'An error occurred during submission.');
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }
+                })
+                .withFailureHandler(function (err) {
+                    console.error('Error submitting KPIs:', err);
+                    document.getElementById('submitBtn').disabled = false;
+                    document.getElementById('submitBtn').textContent = 'Submit KPIs';
+                    showError('Error submitting KPIs: ' + err.message + '. Please try again or contact support.');
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                })
+                .submitKPIs(submissionData);
+        }
+
+
+                function clearKPIInputs() {
+            // Clear all accuracy inputs
+            document.querySelectorAll('.accuracy-input').forEach(input => {
+                input.value = '';
+                input.classList.remove('error');
+            });
+
+            // Clear all productivity inputs
+            document.querySelectorAll('.productivity-input').forEach(input => {
+                input.value = '';
+                input.classList.remove('error');
+            });
+
+            // Clear all quality inputs
+            document.querySelectorAll('.quality-input').forEach(input => {
+                input.value = '';
+                input.classList.remove('error');
+                if (input.closest('.percentage-input-wrapper')) {
+                    input.closest('.percentage-input-wrapper').classList.remove('error');
+                }
+            });
+
+            // Clear all VOC inputs
+            document.querySelectorAll('.voc-input').forEach(input => {
+                input.value = '';
+                input.classList.remove('error');
+                if (input.closest('.percentage-input-wrapper')) {
+                    input.closest('.percentage-input-wrapper').classList.remove('error');
+                }
+            });
+
+            // Clear all team development inputs
+            document.querySelectorAll('.teamDevelopment-input').forEach(input => {
+                input.value = '';
+                input.classList.remove('error');
+            });
+
+            // Clear all PPD inputs
+            document.querySelectorAll('.ppd-input').forEach(input => {
+                input.value = '';
+                input.classList.remove('error');
+            });
+
+            // Clear all status icons
+            currentTeam.forEach(member => {
+                const accuracyStatus = document.getElementById(`accuracy-status-${member.wdid}`);
+                const productivityStatus = document.getElementById(`productivity-status-${member.wdid}`);
+                const qualityStatus = document.getElementById(`quality-status-${member.wdid}`);
+                const vocStatus = document.getElementById(`voc-status-${member.wdid}`);
+                const teamDevStatus = document.getElementById(`teamDevelopment-status-${member.wdid}`);
+                const ppdStatus = document.getElementById(`ppd-status-${member.wdid}`);
+                
+                if (accuracyStatus) accuracyStatus.innerHTML = '';
+                if (productivityStatus) productivityStatus.innerHTML = '';
+                if (qualityStatus) qualityStatus.innerHTML = '';
+                if (vocStatus) vocStatus.innerHTML = '';
+                if (teamDevStatus) teamDevStatus.innerHTML = '';
+                if (ppdStatus) ppdStatus.innerHTML = '';
+            });
+
+            // Disable submit button until new data is entered
+            document.getElementById('submitBtn').disabled = true;
+            // Reset exempt status
+exemptMembers = {};
+document.querySelectorAll('.btn-exempt.active').forEach(btn => {
+    btn.textContent = 'Exempt';
+    btn.classList.remove('active');
+});
+document.querySelectorAll('.exempt-row').forEach(row => {
+    row.classList.remove('exempt-row');
+});
+
+        }
+
+
+        function cancelSubmission() {
+    showCustomConfirm(
+        'Cancel Submission?',
+        'All unsaved data will be lost. Are you sure you want to cancel and reload the page?',
+        function() {
+            location.reload();
+        }
+    );
+}
+
+
+                function showTeamSections() {
+            document.getElementById('teamSummary').classList.remove('hidden');
+            document.getElementById('accuracySection').classList.remove('hidden');
+            document.getElementById('productivitySection').classList.remove('hidden');
+            document.getElementById('qualitySection').classList.remove('hidden');
+            document.getElementById('vocSection').classList.remove('hidden');
+            document.getElementById('teamDevelopmentSection').classList.remove('hidden');
+            document.getElementById('ppdSection').classList.remove('hidden');
+        }
+
+
+                function hideTeamSections() {
+            document.getElementById('teamSummary').classList.add('hidden');
+            document.getElementById('accuracySection').classList.add('hidden');
+            document.getElementById('productivitySection').classList.add('hidden');
+            document.getElementById('qualitySection').classList.add('hidden');
+            document.getElementById('vocSection').classList.add('hidden');
+            document.getElementById('teamDevelopmentSection').classList.add('hidden');
+            document.getElementById('ppdSection').classList.add('hidden');
+        }
+
+
+        function showError(message) {
+            document.getElementById('errorMessage').textContent = message;
+            document.getElementById('errorBanner').classList.remove('hidden');
+        }
+
+        function hideError() {
+            document.getElementById('errorBanner').classList.add('hidden');
+        }
+
+        function showSuccess(message) {
+            document.getElementById('successMessage').textContent = message;
+            document.getElementById('successBanner').classList.remove('hidden');
+        }
+
+        function hideSuccess() {
+            document.getElementById('successBanner').classList.add('hidden');
+        }
+
+function showCustomConfirm(title, message, onConfirm) {
+    // Create modal overlay
+    const overlay = document.createElement('div');
+    overlay.id = 'customConfirmOverlay';
+    overlay.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 10000;
+        animation: fadeIn 0.2s ease;
+    `;
+
+    // Create modal box
+    const modal = document.createElement('div');
+    modal.style.cssText = `
+        background: white;
+        border-radius: 12px;
+        padding: 2rem;
+        max-width: 450px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+        animation: slideIn 0.3s ease;
+    `;
+
+    modal.innerHTML = `
+        <div style="margin-bottom: 1.5rem;">
+            <h3 style="color: #4b286d; font-size: 1.3rem; margin-bottom: 0.8rem; font-weight: 600;">
+                ${title}
+            </h3>
+            <p style="color: #666; font-size: 0.95rem; line-height: 1.5;">
+                ${message}
+            </p>
+        </div>
+        <div style="display: flex; gap: 0.8rem; justify-content: flex-end;">
+            <button id="confirmCancel" class="btn btn-secondary" style="padding: 0.6rem 1.5rem;">
+                Cancel
+            </button>
+            <button id="confirmOK" class="btn" style="background: #e74c3c; color: white; padding: 0.6rem 1.5rem;">
+                Reset Form
+            </button>
+        </div>
+    `;
+
+    overlay.appendChild(modal);
+    document.body.appendChild(overlay);
+
+    // Add animation styles
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideIn {
+            from { transform: translateY(-20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        #confirmOK:hover {
+            background: #c0392b !important;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(231, 76, 60, 0.3);
+        }
+    `;
+    document.head.appendChild(style);
+
+    // Handle button clicks
+    document.getElementById('confirmOK').onclick = function() {
+        document.body.removeChild(overlay);
+        if (onConfirm) onConfirm();
+    };
+
+    document.getElementById('confirmCancel').onclick = function() {
+        document.body.removeChild(overlay);
+    };
+
+    // Close on overlay click
+    overlay.onclick = function(e) {
+        if (e.target === overlay) {
+            document.body.removeChild(overlay);
+        }
+    };
+
+    // Close on ESC key
+    document.addEventListener('keydown', function escHandler(e) {
+        if (e.key === 'Escape') {
+            if (document.getElementById('customConfirmOverlay')) {
+                document.body.removeChild(overlay);
+            }
+            document.removeEventListener('keydown', escHandler);
+        }
+    });
+}
+
+
+            function resetForm() {
+  showCustomConfirm(
+    'Reset All Fields?',
+    'This will clear all entered data in all 6 KPI sections (Accuracy, Productivity, Quality, VOC, Team Development, and PPD). This action cannot be undone.',
+    function () {
+
+      // Reuse the same reset logic you already maintain
+      clearKPIInputs();
+
+      // Clear ALL status icons safely (covers any row that exists)
+      [
+        'accuracy-status-',
+        'productivity-status-',
+        'quality-status-',
+        'voc-status-',
+        'teamDevelopment-status-',
+        'ppd-status-'
+      ].forEach(prefix => {
+        document.querySelectorAll(`[id^="${prefix}"]`).forEach(el => el.innerHTML = '');
+      });
+
+      document.getElementById('submitBtn').disabled = true;
+
+      hideError();
+      hideSuccess();
+
+      showSuccess('✓ Form has been reset. All 6 KPI sections cleared.');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+
+      setTimeout(() => hideSuccess(), 3000);
+    }
+  );
+}
+
+
+function validateBeforeSubmit() {
+  const KPI_TYPES = [
+    { key: 'accuracy',        inputClass: 'accuracy-input',        statusPrefix: 'accuracy-status-',        pct: false },
+    { key: 'productivity',    inputClass: 'productivity-input',    statusPrefix: 'productivity-status-',    pct: false },
+    { key: 'quality',         inputClass: 'quality-input',         statusPrefix: 'quality-status-',         pct: true  },
+    { key: 'voc',             inputClass: 'voc-input',             statusPrefix: 'voc-status-',             pct: true  },
+    { key: 'teamDevelopment', inputClass: 'teamDevelopment-input', statusPrefix: 'teamDevelopment-status-', pct: false },
+    { key: 'ppd',             inputClass: 'ppd-input',             statusPrefix: 'ppd-status-',             pct: false }
+  ];
+
+  let hasAnyIssue = false;
+  const missingSummary = [];
+
+  // Clear old submission-time errors first (keep your existing live ones)
+  document.querySelectorAll(
+    '.accuracy-input.error, .productivity-input.error, .quality-input.error, .voc-input.error, .teamDevelopment-input.error, .ppd-input.error'
+  ).forEach(el => el.classList.remove('error'));
+
+  document.querySelectorAll('.percentage-input-wrapper.error').forEach(w => w.classList.remove('error'));
+
+  currentTeam.forEach(member => {
+    const wdid = member.wdid;
+
+    KPI_TYPES.forEach(kpi => {
+      // Skip KPI validation if this member is exempt for this KPI
+      if (exemptMembers?.[wdid]?.[kpi.key]) return;
+
+      const allInputs = document.querySelectorAll(`.${kpi.inputClass}[data-wdid="${wdid}"]`);
+      if (!allInputs || allInputs.length === 0) return;
+
+      const numericInputs = Array.from(allInputs).filter(el => el.tagName !== 'TEXTAREA');
+      const notesEl = Array.from(allInputs).find(el => el.tagName === 'TEXTAREA');
+
+      let missingCount = 0;
+      let hasZero = false;
+
+      // Required numeric fields: must be non-empty (0 is allowed but triggers note requirement)
+      numericInputs.forEach(input => {
+        const raw = String(input.value ?? '').trim();
+
+        if (raw === '') {
+          missingCount++;
+          input.classList.add('error');
+          if (kpi.pct) input.closest('.percentage-input-wrapper')?.classList.add('error');
+          return;
+        }
+
+        const val = parseFloat(raw);
+        if (isNaN(val)) {
+          missingCount++;
+          input.classList.add('error');
+          if (kpi.pct) input.closest('.percentage-input-wrapper')?.classList.add('error');
+          return;
+        }
+
+        if (val === 0) hasZero = true;
+      });
+
+      // If any numeric value is 0 -> notes required
+      if (hasZero) {
+        const note = (notesEl?.value ?? '').trim();
+        if (!note) {
+          missingCount++; // count it as an issue
+          if (notesEl) notesEl.classList.add('error');
+        }
+      }
+
+      // Update status icon for this KPI row
+      const statusEl = document.getElementById(`${kpi.key}-status-${wdid}`);
+      if (statusEl) {
+        if (missingCount > 0) {
+          statusEl.innerHTML = `<span class="status-icon status-error" title="Missing required fields${hasZero ? ' (Comments required when a value is 0)' : ''}">✗</span>`;
+        }
+      }
+
+      if (missingCount > 0) {
+        hasAnyIssue = true;
+        missingSummary.push(`${member.name} (${wdid}) → ${kpi.key}${hasZero ? ' (0 entered → comments required)' : ''}`);
+      }
+    });
+  });
+
+  if (hasAnyIssue) {
+    showError(
+      `Please complete missing required fields before submitting.\n\nAffected rows:\n- ${missingSummary.join('\n- ')}`
+    );
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    return false;
+  }
+
+  return true;
+}
+
+
+  </script>
+</body>
+
+</html>
